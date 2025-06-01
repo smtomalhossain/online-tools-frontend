@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BiSolidFileJpg, BiSolidFilePng } from "react-icons/bi";
 import { FaDownload, FaFileImage, FaFilePdf } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -8,9 +9,9 @@ const Header = () => {
     return (
         <nav className="bg-white shadow-md fixed w-full top-0 z-[1000]">
             <div className="max-w-[1200px] mx-auto px-[0.5rem] py-0 flex justify-between items-center h-[70px] mx-auto">
-                <a href="#" className="text-[24px] text-blue-500 font-bold no-underline flex items-center gap-2">
+                <Link href="/" className="text-[24px] text-blue-500 font-bold no-underline flex items-center gap-2">
                     <FaFilePdf /> ConvertTools
-                </a>
+                </Link>
                 <button className="cursor-pointer bg-transparent border-none text-[32px] text-gray-500 md:hidden">
                     <GiHamburgerMenu />
                 </button>

@@ -1,13 +1,13 @@
 "use client"
-import HeroSection from "../../components/HeroSection";
-import NotificationBar from "../../components/NotificationBar";
-import SearchBar from "../../components/SearchBar";
-import ColorCard from "../../components/ColorCard";
-import { colorCardData, statusCardData, toolsCardData } from "@/lib/data";
+import { colorCardData, imageCardData, statusCardData, toolsCardData } from "@/lib/data";
 import { useState } from "react";
-import ToolsCard from "../../components/ToolsCard";
-import StatusCard from "../../components/StatusCard";
-import ImageToolsCard from "../../components/ImageToolsCard";
+import NotificationBar from "./components/NotificationBar";
+import HeroSection from "./components/HeroSection";
+import SearchBar from "./components/SearchBar";
+import ColorCard from "./components/ColorCard";
+import ToolsCard from "./components/ToolsCard";
+import StatusCard from "./components/StatusCard";
+import ImageToolsCard from "./components/ImageToolsCard";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('all');
@@ -160,8 +160,10 @@ export default function Home() {
               title={item.title}
               category={item.category.text}
               className={item.category.className}
+              url={item.url}
             />
           ))}
+
         </div>
         {/* Status Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 py-5 mt-10">
@@ -187,9 +189,15 @@ export default function Home() {
         </div>
         {/* Tools Card Section */}
         <div className="mt-10 grid gap-10 [grid-template-columns:repeat(auto-fit,_minmax(320px,_1fr))]">
-          <ImageToolsCard/>
-          <ImageToolsCard/>
-          <ImageToolsCard/>
+          {imageCardData.map((item, index) => (
+            <ImageToolsCard
+              key={index}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
+
         </div>
 
 

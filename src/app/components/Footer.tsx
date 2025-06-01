@@ -7,7 +7,7 @@ import { RiBloggerFill, RiImageAiFill } from "react-icons/ri";
 
 const Footer = () => {
     return (
-        <div className="bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.05)] mt-10 pb-8 px-0 relative">
+        <div className="bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.05)] pb-8 px-0 relative">
             <div className="px-3 max-w-[1200px] mx-auto md:px-5 pt-[4.5rem] relative z-[1]">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-[2.5fr_1.5fr_2.5fr_2fr]">
                     {/* Footer Section 1 */}
