@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CiCircleRemove } from "react-icons/ci";
 import { FaFileUpload, FaRegArrowAltCircleRight } from "react-icons/fa";
@@ -84,6 +83,9 @@ const ImageToPDF = () => {
         };
     }, [files]);
 
+
+
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-white overflow-auto py-10 px-4">
 
@@ -103,7 +105,7 @@ const ImageToPDF = () => {
                             <h4 className="text-center text-sm font-medium text-gray-900">Drag and Drop your file here or</h4>
                             <div className="flex items-center justify-center">
                                 <label>
-                                    <input type="file" hidden multiple onChange={handleFileChange} />
+                                    <input type="file" accept=".pdf" hidden multiple onChange={handleFileChange} />
                                     <div className="flex h-9 w-28 cursor-pointer flex-col items-center justify-center rounded-full bg-indigo-600 px-2 text-xs font-semibold text-white shadow">
                                         Choose File
                                     </div>
@@ -129,12 +131,12 @@ const ImageToPDF = () => {
                                                 {/* file card content */}
                                                 <div className="flex items-center justify-between gap-2">
                                                     <div className="flex items-center gap-2">
-                                                        <Image
-                                                            width={80}
-                                                            height={60}
+                                                        <embed
                                                             src={file.preview}
-                                                            alt={file.name}
-                                                            className="object-cover rounded"
+                                                            type="application/pdf"
+                                                            width="80"
+                                                            height="60"
+                                                            className="rounded"
                                                         />
                                                         <div className="grid gap-1">
                                                             <h4 className="text-sm font-normal text-gray-900">{file.name}</h4>

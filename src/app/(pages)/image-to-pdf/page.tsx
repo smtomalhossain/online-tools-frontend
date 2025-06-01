@@ -84,6 +84,44 @@ const ImageToPDF = () => {
         };
     }, [files]);
 
+    const handleConvertToPDF = async () => {
+        if (files.length === 0) {
+            alert("Please upload at least one image first.");
+            return;
+        }
+
+        const formData = new FormData();
+        files.forEach((file) => {
+            formData.append("files", file.file);
+        });
+
+        try {
+            const res = await fetch("/api/image-to-pdf", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to convert images to PDF");
+            }
+
+            const blob = await res.blob();
+
+            // Create a temporary URL and trigger download
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "converted-images.pdf"; // file name for download
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            alert((error as Error).message);
+        }
+    };
+
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-white overflow-auto py-10 px-4">
 
@@ -174,7 +212,8 @@ const ImageToPDF = () => {
                 </DragDropContext>
 
                 <div className="p-5">
-                    <button className="mx-auto bg-blue-500 text-white flex items-center gap-3 min-h-[56px] text-2xl leading-7 rounded-xl font-medium px-6 py-4 hover:bg-blue-600 cursor-pointer">
+                    <button className="mx-auto bg-blue-500 text-white flex items-center gap-3 min-h-[56px] text-2xl leading-7 rounded-xl font-medium px-6 py-4 hover:bg-blue-600 cursor-pointer"
+                    onClick={handleConvertToPDF}>
                         <span className="font-bold height: 24px;">Convert to PDF</span>
                         <span><FaRegArrowAltCircleRight className="text-3xl font-bold " />
                         </span>
